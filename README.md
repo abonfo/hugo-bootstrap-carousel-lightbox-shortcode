@@ -1,12 +1,12 @@
 # Hugo bootstrap carousel lightbox shortcode
  
-This is a hugo module for a **shortcode** that shows one or multiple bootstrap 5 carousels in a single page.
+This is a hugo module for a **shortcode** template `carousel.html` that shows one or multiple bootstrap 5 carousels in a single page.
 
 The images for each carousel are pulled from **single subdirectories** inside your page bundle. The carousels have the lightbox2 functionality.
 
 The caption for the images is fetched from **EXIF metadata**, so you need to fill the correponding EXIF field in the jpegs (for images whitout default EXIF metadata, like camera photos).
 
-Until future development, images should be manually resized to the desired format and EXIF metadata shuld be inserted in the images with a jpeg format.  
+Until future development, images should be **manually resized** to the desired format and EXIF metadata shuld be inserted in the images with a jpeg format. The carousel will work even if you do not resize the images, but the result will be a carousel that will expand and contract to fit the single image original size. This is needed because in my tests, the resize function in Hugo will remove the EXIF metadata.  
 
 An example of the result can be viewd at the page: https://studio.andrebonfanti.it/intelligenza-artificiale-generazione-render-da-schizzi/
 
@@ -155,12 +155,11 @@ Where the parameters are:
  * **interval** (REQUIRED): is the delay time between automatically cycling to the next item, in milliseconds. Insert your desired time in ms (ex. 5000). Can be "false" to disable, but must be a number if **ride** is set to "carousel" or "true".
  * **fade** (OPTIONAL): "true" or "false", to enable or disable the fading of the images. You can also omit the whole parameter, and in this case the carousel will default to standard transition.
 
-
 ## Roadmap
 
 - [ ] Add others bootstrap carousel options as shortcode parameters for data-attributes.
-- [ ] Add resize option parameters for different image size (this can break EXIF metadata).
-- [ ] Add shortcode parameters to fetch a specific EXIF field, or fallback to image filename for non-jpeg images, or other source for caption.  
+- [ ] Add resize option parameter to dynamically set the image size (this can break EXIF metadata), or use other methods for scaling the images.
+- [ ] Add shortcode parameter to fetch a specific EXIF field, or fallback to image filename for non-jpeg images, or other source for captions.  
 - [ ] Add EXIF caption to lightbox pulled from jpeg metadata.
 
 ## Credits
