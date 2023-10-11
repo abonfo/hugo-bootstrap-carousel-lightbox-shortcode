@@ -127,6 +127,10 @@ For other oprions, refer to https://gohugo.io/commands/hugo_mod_get.
 
 ## Usage
 
+To use the shortcode, read the following instructions.
+
+### Code and files usage
+
 In the page you want to use the shortcode, create the subfolder/s to store your images, and put some images in them (pre-resized and with EXIF data in the `ImageDescription` field of the jpegs). The format must be `slider-XX`, as the `slider-` part is hardcoded in the template. For example:
 
     .                   # page folder
@@ -155,12 +159,26 @@ Where the parameters are:
  * **interval** (REQUIRED): is the delay time between automatically cycling to the next item, in milliseconds. Insert your desired time in ms (ex. 5000). Can be "false" to disable, but must be a number if **ride** is set to "carousel" or "true".
  * **fade** (OPTIONAL): "true" or "false", to enable or disable the fading of the images. You can also omit the whole parameter, and in this case the carousel will default to standard transition.
 
+### Css usage
+
+This module is built usgin the same classes from the bootstrap carousel component (refer to https://getbootstrap.com/docs/5.2/components/carousel/).
+
+Until future development, the module uses the `controls` and the `indicators` implementation of the bootstrap carousel component, as hardcoded classes: 
+
+* the `controls` (left and right arrows) are hardcoded with the button classes `carousel-control-prev` and `carousel-control-next`. 
+* the `indicators` (button lines at the bottom) are hardcoded with the `carousel-indicators` class. 
+
+The carousel caption is wrapped with the bootstrap `carousel-caption` class. Inside this class, the module implements a custom `carousel-description` class that wraps the EXIF metadata `ImageDescription`. However, this custom class is available only if the EXIF metadata exists (the class resides inside a `with` conditional statement that checks if the metadata tag exists).
+
+
 ## Roadmap
 
 - [ ] Add others bootstrap carousel options as shortcode parameters for data-attributes.
 - [ ] Add resize option parameter to dynamically set the image size (this can break EXIF metadata), or use other methods for scaling the images.
 - [ ] Add shortcode parameter to fetch a specific EXIF field, or fallback to image filename for non-jpeg images, or other source for captions.  
 - [ ] Add EXIF caption to lightbox pulled from jpeg metadata.
+- [ ] Add parameters and conditional functions to show or hide the `controls` in the carousel. 
+- [ ] Add parameters and conditional functions to show or hide the `indicators` in the carousel.
 
 ## Credits
 
