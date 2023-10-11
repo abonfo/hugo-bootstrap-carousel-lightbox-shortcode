@@ -161,7 +161,7 @@ Where the parameters are:
 
 ### Css usage
 
-This module is built usgin the same classes from the bootstrap carousel component (refer to https://getbootstrap.com/docs/5.2/components/carousel/).
+This module is built using the same classes from the bootstrap carousel component (refer to https://getbootstrap.com/docs/5.2/components/carousel/).
 
 Until future development, the module uses the `controls` and the `indicators` implementation of the bootstrap carousel component, as hardcoded classes: 
 
