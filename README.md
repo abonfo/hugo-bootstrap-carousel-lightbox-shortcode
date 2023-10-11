@@ -87,7 +87,7 @@ Where `PROJECT` is the name you gave with `hugo mod init PROJECT` command.
 
 ### Installation
 
-After you have initialized your site as a hugo module, to install this shortcode module, edit your `config.yaml` file to add the `module` import specifications (refer to https://gohugo.io/hugo-modules/configuration/ for more options).I am using the yaml format, but you are free to convert this in *toml* or *json* format. 
+After you have initialized your site as a hugo module, to install this shortcode module, edit your `config.yaml` file to add the `module` import specifications (refer to https://gohugo.io/hugo-modules/configuration/ for more options). I am using the yaml format, but you are free to convert this in *toml* or *json* format. 
 
 ```
 module:
@@ -98,9 +98,12 @@ module:
 Then, you need to pull the imports defined in the config file. In the root folder of your site run:
 
 ```
-humo mod get
+hugo mod get
 ```
-This will download the module and add a `require` row in your `go.mod` file with the module URL.
+This command will:
+* run all the imports defined in your config file;
+* download this module;
+* add a `require` row in your `go.mod` file with the module URL.
 
 This is the code for the **production** config file. If you need to test the module on development or staging environment, refer to https://gohugo.io/getting-started/configuration/#configuration-directory for setting different environments, and to https://gohugo.io/hugo-modules/configuration/#module-configuration-top-level to use the `replacements` option to edit the module locally without pushing the commits to your forked repo of the module.
 
@@ -147,17 +150,17 @@ Then insert this shortcode in your page content where you want the carousel to a
 >}}
 ```
 Where the parameters are:
- * "slider_num" (REQUIRED): the number of the folder from which the shortcode should fetch the images.  
- * "ride" (REQUIRED): "carousel" to enable autoplay on load; "false" to disable autoplay; "true" to autoplay the carousel after the user manually cycles the first item. 
- * "interval" (REQUIRED): is the delay time between automatically cycling to the next item, in milliseconds. Insert your desired time in ms (ex. 5000). Can be "false" to disable, but must be a number if "ride" is set to "carousel" or "true".
- * "fade" (OPTIONAL): "true" or "false", to enable or disable the fadeing of the images. You can also omit the whole parameter, and in this case the carousel will default to standard transition.
+ * **slider_num** (REQUIRED): the number of the folder from which the shortcode should fetch the images. Keep the value in the quotes.  
+ * **ride** (REQUIRED): use "carousel" to enable autoplay on load; use "false" to disable autoplay; use "true" to autoplay the carousel after the user manually cycles the first item. 
+ * **interval** (REQUIRED): is the delay time between automatically cycling to the next item, in milliseconds. Insert your desired time in ms (ex. 5000). Can be "false" to disable, but must be a number if **ride** is set to "carousel" or "true".
+ * **fade** (OPTIONAL): "true" or "false", to enable or disable the fading of the images. You can also omit the whole parameter, and in this case the carousel will default to standard transition.
 
 
 ## Roadmap
 
 - [ ] Add others bootstrap carousel options as shortcode parameters for data-attributes.
 - [ ] Add resize option parameters for different image size (this can break EXIF metadata).
-- [ ] Add shortcode parameters to fetch a specific EXIF field, or fallback to image filename for non-pjeg images, or other source for caption.  
+- [ ] Add shortcode parameters to fetch a specific EXIF field, or fallback to image filename for non-jpeg images, or other source for caption.  
 - [ ] Add EXIF caption to lightbox pulled from jpeg metadata.
 
 ## Credits
