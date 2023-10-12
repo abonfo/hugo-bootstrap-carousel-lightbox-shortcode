@@ -10,13 +10,14 @@
 {{ $controls := .Get "controls" }}
 {{ $indicators := .Get "indicators" }}
 {{ $dark := .Get "dark" }}
+{{ $wrap := .Get "wrap" }}
 
 {{ with $slider_num }}
 <div class="container">
     <div class="row d-flex justify-content-center">
       <div class="col-lg-9 col-xl-8">
 		{{ $images := $slider_images.Match (printf "slider-%s/*" $slider_num) }}
-        <div id="{{ printf "LightboxCarousel-%s" $slider_num }}" class="carousel {{ with $dark }} carousel-dark {{ end }} slide mb-5 {{ with $fade }} carousel-fade {{ end }}" data-bs-ride="{{ $ride }}" data-bs-interval="{{ $interval }}">
+        <div id="{{ printf "LightboxCarousel-%s" $slider_num }}" class="carousel {{ with $dark }} carousel-dark {{ end }} slide mb-5 {{ with $fade }} carousel-fade {{ end }}" data-bs-ride="{{ $ride }}" data-bs-interval="{{ $interval }}" data-bs-wrap="{{ $wrap }}">
           {{ with $indicators }}
           <div class="carousel-indicators">
             {{ range $index, $value := $images }}

@@ -149,7 +149,8 @@ Then insert this shortcode in your page content where you want the carousel to a
 {{< carousel 
     slider_num="XX" 
     ride=carousel 
-    interval=7000 
+    interval=7000
+    wrap=true 
     fade=true
     controls=true
     indicators=true
@@ -160,6 +161,7 @@ Where the parameters are:
  * **slider_num** (REQUIRED): the number of the folder from which the shortcode should fetch the images. Keep the value in the quotes.  
  * **ride** (REQUIRED): use "carousel" to enable autoplay on load; use "false" to disable autoplay; use "true" to autoplay the carousel after the user manually cycles the first item. 
  * **interval** (REQUIRED): is the delay time between automatically cycling to the next item, in milliseconds. Insert your desired time in ms (ex. 5000). Can be "false" to disable, but must be a number if **ride** is set to "carousel" or "true".
+ * **wrap** (REQUIRED): "true" or "false", to enable or disable the carousel cycling or have an hard stop at the end.
  * **fade** (OPTIONAL): "true" or "false", to enable or disable the fading of the images. You can also omit the whole parameter, and in this case the carousel will default to standard transition.
  * **controls** (OPTIONAL): "true" or "false", to enable or disable the left and right arrows. If the parameter is omitted, no arrows will be shown.
  * **indicators** (OPTIONAL): "true" or "false", to enable or disable the bottom indicators. If the parameter is omitted, no indicators will be shown.
@@ -175,6 +177,7 @@ The carousel caption is wrapped with the standard bootstrap `carousel-caption` c
 ## Roadmap
 
 - [ ] Add touch swiping bootstrap carousel option as shortcode parameter.
+- [x] Add wrap bootstrap carousel option as shortcode parameter.
 - [x] Add dark bootstrap carousel option as shortcode parameter.
 - [ ] Add resize option parameter to dynamically set the image size (this can break EXIF metadata), or use other methods for scaling the images.
 - [ ] Add shortcode parameter to fetch a specific EXIF field, or fallback to image filename for non-jpeg images, or other source for captions.  
