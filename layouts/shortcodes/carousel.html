@@ -12,6 +12,7 @@
 {{ $ride := .Get "ride" }}
 {{ $fade := .Get "fade"}}
 {{ $controls := .Get "controls" }}
+{{ $indicators := .Get "indicators" }}
 
 {{ with $slider_num }}
 <div class="container">
@@ -19,12 +20,14 @@
       <div class="col-lg-9 col-xl-8">
 		{{ $images := $slider_images.Match (printf "slider-%s/*" $slider_num) }}
         <div id="{{ printf "LightboxCarousel-%s" $slider_num }}" class="carousel slide mb-5 {{ with $fade }} carousel-fade {{ end }}" data-bs-ride="{{ $ride }}" data-bs-interval="{{ $interval }}">
+          {{ with $indicators }}
           <div class="carousel-indicators">
             {{ range $index, $value := $images }}
             <button type="button" data-bs-target="#{{ printf "LightboxCarousel-%s" $slider_num }}" data-bs-slide-to="{{ $index }}" {{ if eq
               $index 0 }}class="active" aria-current="true" {{ end }}aria-label="Slide {{ add $index 1}}"></button>
             {{ end }}
           </div>
+          {{ end }}
           <div class="carousel-inner">
 			        {{ range $index, $value := $images }}
               <div class="carousel-item{{ if eq $index 0 }} active{{ end }}">
