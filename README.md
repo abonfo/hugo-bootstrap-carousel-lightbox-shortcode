@@ -153,6 +153,7 @@ Then insert this shortcode in your page content where you want the carousel to a
     fade=true
     controls=true
     indicators=true
+    dark=false
 >}}
 ```
 Where the parameters are:
@@ -161,7 +162,8 @@ Where the parameters are:
  * **interval** (REQUIRED): is the delay time between automatically cycling to the next item, in milliseconds. Insert your desired time in ms (ex. 5000). Can be "false" to disable, but must be a number if **ride** is set to "carousel" or "true".
  * **fade** (OPTIONAL): "true" or "false", to enable or disable the fading of the images. You can also omit the whole parameter, and in this case the carousel will default to standard transition.
  * **controls** (OPTIONAL): "true" or "false", to enable or disable the left and right arrows. If the parameter is omitted, no arrows will be shown.
- * **indicators** (OPTIONAL): "true" or "false", to enable or disable the bottom indicators. If the parameter is omitted, no indicators will be shown.  
+ * **indicators** (OPTIONAL): "true" or "false", to enable or disable the bottom indicators. If the parameter is omitted, no indicators will be shown.
+ * **dark** (OPTIONAL): "true" or "false", to enable or disable dark controls, indicators, and captions. If the parameter is omitted, white theme colors will be used. You can override this behaviour by setting your colors in your custom css file.  
 
 ### Css usage
 
@@ -172,7 +174,8 @@ The carousel caption is wrapped with the standard bootstrap `carousel-caption` c
 
 ## Roadmap
 
-- [ ] Add others bootstrap carousel options as shortcode parameters for data-attributes.
+- [ ] Add touch swiping bootstrap carousel option as shortcode parameter.
+- [x] Add dark bootstrap carousel option as shortcode parameter.
 - [ ] Add resize option parameter to dynamically set the image size (this can break EXIF metadata), or use other methods for scaling the images.
 - [ ] Add shortcode parameter to fetch a specific EXIF field, or fallback to image filename for non-jpeg images, or other source for captions.  
 - [ ] Add EXIF caption to lightbox pulled from jpeg metadata.

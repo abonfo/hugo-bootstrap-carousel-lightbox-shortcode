@@ -1,9 +1,5 @@
-{{/* Bootstrap Lightbox carousel */}}
-{{/* The arguments are: 
-    "ride": carousel | false, to set or disable autoplay 
-    "interval": number | false, to set the slider time or to disable. Must be a number if "ride" is set to "carousel"
-    "fade": true | false, to enable or disable the fadeing of the images
-*/}}
+{{/* Hugo Bootstrap Lightbox Carousel Shortcode*/}}
+{{/* Credits: André Bonfanti - abonfo@gmail.com*/}}
 
 {{ $slider_num := .Get "slider_num" }}
 {{ $slider_images := .Page.Resources.ByType "image" }}
@@ -13,13 +9,14 @@
 {{ $fade := .Get "fade"}}
 {{ $controls := .Get "controls" }}
 {{ $indicators := .Get "indicators" }}
+{{ $dark := .Get "dark" }}
 
 {{ with $slider_num }}
 <div class="container">
     <div class="row d-flex justify-content-center">
       <div class="col-lg-9 col-xl-8">
 		{{ $images := $slider_images.Match (printf "slider-%s/*" $slider_num) }}
-        <div id="{{ printf "LightboxCarousel-%s" $slider_num }}" class="carousel slide mb-5 {{ with $fade }} carousel-fade {{ end }}" data-bs-ride="{{ $ride }}" data-bs-interval="{{ $interval }}">
+        <div id="{{ printf "LightboxCarousel-%s" $slider_num }}" class="carousel {{ with $dark }} carousel-dark {{ end }} slide mb-5 {{ with $fade }} carousel-fade {{ end }}" data-bs-ride="{{ $ride }}" data-bs-interval="{{ $interval }}">
           {{ with $indicators }}
           <div class="carousel-indicators">
             {{ range $index, $value := $images }}
