@@ -11,6 +11,7 @@
 {{ $interval := .Get "interval" }}
 {{ $ride := .Get "ride" }}
 {{ $fade := .Get "fade"}}
+{{ $controls := .Get "controls" }}
 
 {{ with $slider_num }}
 <div class="container">
@@ -40,6 +41,7 @@
 			        </div>
             {{ end }}
           </div>
+          {{ with $controls }}
           <button class="carousel-control-prev" type="button" data-bs-target="#{{ printf "LightboxCarousel-%s" $slider_num }}"
             data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -50,6 +52,7 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
+          {{ end }}
         </div>
       </div>
     </div>
