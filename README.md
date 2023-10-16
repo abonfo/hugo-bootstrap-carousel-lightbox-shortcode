@@ -2,11 +2,11 @@
  
 This is a hugo module for a **shortcode** template `carousel.html` that shows one or multiple bootstrap 5 carousels in a single page.
 
-The images for each carousel are pulled from **single subdirectories** inside your page bundle. The carousels have the lightbox2 functionality.
+The images for each carousel are pulled from **single subdirectories** inside your page bundle. The carousels can have the lightbox2 functionality (option can be set per-carousel).
 
-The caption for the images in a subdirectory can be fetched from the images filename or from the **EXIF metadata _.ImageDescription_**. In this last case, you will need to fill the correponding EXIF field in the jpegs (for images whitout default EXIF metadata). This option to fetch from filename or from EXIF is a per-subdirectory option, not a per-file option. 
+The caption for the images in a subdirectory can be fetched from the images **filename** or from the **EXIF metadata _.ImageDescription_**. In this last case, you will need to fill the correponding EXIF field in the jpegs (for images whitout default EXIF metadata). This option to fetch from filename or from EXIF is a per-subdirectory option, not a per-file option. 
 
-Until future development, images should be **manually resized** to the desired format and EXIF metadata shuld be inserted in the images with a jpeg format. The carousel will work even if you do not resize the images, but the result will be a carousel that will expand and contract to fit the single image original size. This is needed because in my tests, the resize function in Hugo will remove the EXIF metadata.  
+Until future development, images should be **manually resized** to the desired format and EXIF metadata shuld be inserted in the images in a jpeg format, if you do not want to use the filename as the carousel caption. The carousel will work even if you do not resize the images, but the result will be a carousel that will expand and contract to fit the single image original size. This is needed because in my tests, the resize function in Hugo will remove the EXIF metadata.  
 
 An example of the result can be viewd at the page: https://studio.andrebonfanti.it/intelligenza-artificiale-generazione-render-da-schizzi/
 
@@ -115,10 +115,10 @@ To update this module to the last version:
 hugo mod get -u github.com/abonfo/hugo-bootstrap-carousel-lightbox-shortcode
 ```
 
-To update this module to a certain tag version, for example to v1.1.0:
+To update this module to a certain tag version, for example to v1.2.0:
 
 ```
-hugo mod get -u github.com/abonfo/hugo-bootstrap-carousel-lightbox-shortcode@v1.1.0
+hugo mod get -u github.com/abonfo/hugo-bootstrap-carousel-lightbox-shortcode@v1.2.0
 ```
 
 For other oprions, refer to https://gohugo.io/commands/hugo_mod_get.
@@ -168,6 +168,7 @@ Insert this shortcode in your page content where you want the carousel to appear
     indicators=true
     dark=false
     caption_source=EXIF
+    lightbox=true
 >}}
 ```
 Where the parameters are:
@@ -180,6 +181,7 @@ Where the parameters are:
  * **indicators** (OPTIONAL): "true" or "false", to enable or disable the bottom indicators. If the parameter is omitted, no indicators will be shown.
  * **dark** (OPTIONAL): "true" or "false", to enable or disable dark controls, indicators, and captions. If the parameter is omitted, white theme colors will be used. You can override this behaviour by setting your colors in your custom css file.  
 * **caption_source** (OPTIONAL): "EXIF" to use the image description text inside the image EXIF metadata (it fetches the _.ImageDescription_ tag); "FILENAME" to use the file name without the extension. If the parameter is omitted, no caption will be shown and no css class for the caption will be given.
+* **lightbox** (OPTIONAL): "true" to apply lightbox functionality to a single canvas; "false" to not apply lightbox functionality to canvas. If the parameter is omitted, no lightbox functionality will be used (same as "false"). 
 
 ### Css usage
 
@@ -198,7 +200,7 @@ The carousel caption is wrapped with the standard bootstrap `carousel-caption` c
 - [ ] Add EXIF caption to lightbox pulled from jpeg metadata.
 - [x] Add parameters and conditional functions to show or hide the `controls` in the carousel. 
 - [x] Add parameters and conditional functions to show or hide the `indicators` in the carousel.
-- [ ] Add option to disable lightbox functionality and use only the carousel functions.
+- [x] Add option to disable lightbox functionality and use only the carousel functions.
 - [ ] Remove hardcoded "slider-" prefix from image folders and let user define custom folder names.
  
 ## Credits

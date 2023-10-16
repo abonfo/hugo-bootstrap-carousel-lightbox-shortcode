@@ -13,6 +13,7 @@
 {{ $dark := .Get "dark" }}
 {{ $wrap := .Get "wrap" }}
 {{ $caption_source := .Get "caption_source" }}
+{{ $lightbox := .Get "lightbox" }}
 
 {{/* Render a carousel container if an image folder ID is given, or a folder name */}}
 {{ with $slider_num }}
@@ -46,9 +47,11 @@
           <div class="carousel-inner">
 			      {{ range $index, $value := $images }}
               <div class="carousel-item{{ if eq $index 0 }} active{{ end }}">
-  			        <a href="{{ $value.RelPermalink }}" data-lightbox="{{ $slider_num }}">
+
+                {{/* Render lightbox if parameter is set */}}
+  			        {{ with $lightbox }}<a href="{{ $value.RelPermalink }}" data-lightbox="{{ $slider_num }}">{{ end }}
 				          <img src="{{ $value.RelPermalink }}" class="d-block w-100" alt="Slide {{ add $index 1}}">
-			          </a>
+                  {{ with $lightbox }}</a>{{ end }}
                 
                 {{/* Render caption if parameter is set */}}
                 {{ with $caption_source }}
