@@ -169,7 +169,7 @@ Insert this shortcode in your page content where you want the carousel to appear
     dark=false
     caption_source=EXIF
     lightbox=true
-    touch=false
+    touch="false"
 >}}
 ```
 Where the parameters are:
@@ -183,7 +183,7 @@ Where the parameters are:
  * **dark** (OPTIONAL): "true" or "false", to enable or disable dark controls, indicators, and captions. If the parameter is omitted, white theme colors will be used. You can override this behaviour by setting your colors in your custom css file.  
 * **caption_source** (OPTIONAL): "EXIF" to use the image description text inside the image EXIF metadata (it fetches the _.ImageDescription_ tag); "FILENAME" to use the file name without the extension. If the parameter is omitted, no caption will be shown and no css class for the caption will be given.
 * **lightbox** (OPTIONAL): "true" to apply lightbox functionality to a single canvas; "false" to not apply lightbox functionality to canvas. If the parameter is omitted, no lightbox functionality will be used (same as "false"). 
-* **touch** (OPTIONAL): "false" disable the support for left/right swipe interactions on touchscreen devices; "true" enable it. If the parameter is omitted, the default swipe functionality will be used (same as "true").
+* **touch** (OPTIONAL): "false" disable the support for left/right swipe interactions on touchscreen devices; "true" enable it. If the parameter is omitted, the default swipe functionality will be used (same as "true"). Value must be quoted.
 
 ### Css usage
 
