@@ -15,6 +15,7 @@
 {{ $caption_source := .Get "caption_source" }}
 {{ $lightbox := .Get "lightbox" }}
 {{ $touch := .Get "touch" }}
+{{ $lb_caption_source := .Get "lb_caption_source" }}
 
 {{/* Render a carousel container if an image folder ID is given, or a folder name */}}
 {{ with $slider_num }}
@@ -52,8 +53,21 @@
               <div class="carousel-item{{ if eq $index 0 }} active{{ end }}">
 
                 {{/* Render lightbox if parameter is set */}}
-  			        {{ with $lightbox }}<a href="{{ $value.RelPermalink }}" data-lightbox="{{ $slider_num }}">{{ end }}
-				          <img src="{{ $value.RelPermalink }}" class="d-block w-100" alt="Slide {{ add $index 1}}">
+  			        {{ with $lightbox }}
+                  <a href="{{ $value.RelPermalink }}" 
+                  data-lightbox="{{ $slider_num }}"
+                  {{ if eq $lb_caption_source "EXIF" }} 
+                    data-title="
+                      {{ with $value.Exif  }} 
+                      {{ with .Tags.ImageDescription }} {{ . }} {{ end }}
+                      {{ end }}"
+                  {{ else if eq $lb_caption_source "FILENAME" }}
+                    data-title="{{ path.BaseName $value }}"
+                  {{ end }}
+                  >
+                {{ end }}
+				          
+                  <img src="{{ $value.RelPermalink }}" class="d-block w-100" alt="Slide {{ add $index 1}}">
                   {{ with $lightbox }}</a>{{ end }}
                 
                 {{/* Render caption if parameter is set */}}

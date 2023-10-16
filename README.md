@@ -176,6 +176,7 @@ Insert this shortcode in your page content where you want the carousel to appear
     caption_source=EXIF
     lightbox=true
     touch="false"
+    lb_caption_source=EXIF
 >}}
 ```
 Where the parameters are:
@@ -190,6 +191,7 @@ Where the parameters are:
 * **caption_source** (OPTIONAL): "EXIF" to use the image description text inside the image EXIF metadata (it fetches the _.ImageDescription_ tag); "FILENAME" to use the file name without the extension. If the parameter is omitted, no caption will be shown and no css class for the caption will be given.
 * **lightbox** (OPTIONAL): "true" to apply lightbox functionality to a single canvas; "false" to not apply lightbox functionality to canvas. If the parameter is omitted, no lightbox functionality will be used (same as "false"). 
 * **touch** (OPTIONAL): "false" disable the support for left/right swipe interactions on touchscreen devices; "true" enable it. If the parameter is omitted, the default swipe functionality will be used (same as "true"). Value must be quoted.
+* **lb_caption_source** (OPTIONAL): this parameter sets the lightbox caption. Use "EXIF" to fetch the _.ImageDescription_ image EXIF tag; use "FILENAME" to fetch the file name without the extension. If the parameter is omitted, the lightbox caption will default to show the current image number and the total number of images in the set. If the **lightbox** parameter is set to "false", this parameter has no effect.
 
 ### Css usage
 
@@ -205,7 +207,7 @@ The carousel caption is wrapped with the standard bootstrap `carousel-caption` c
 - [x] Add dark bootstrap carousel option as shortcode parameter.
 - [ ] Add resize option parameter to dynamically set the image size (this can break EXIF metadata), or use other methods for scaling the images.
 - [x] Add shortcode parameter to fetch a specific EXIF field, or fallback to image filename ~~for non-jpeg images, or other source for captions~~.  
-- [ ] Add EXIF caption to lightbox pulled from jpeg metadata.
+- [x] Add parameter to fetch the lightbox caption: EXIF to fetch jpeg metadata or FILENAME to fetch the file name.
 - [x] Add parameters and conditional functions to show or hide the `controls` in the carousel. 
 - [x] Add parameters and conditional functions to show or hide the `indicators` in the carousel.
 - [x] Add option to disable lightbox functionality and use only the carousel functions.
