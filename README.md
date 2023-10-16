@@ -4,7 +4,7 @@ This is a hugo module for a **shortcode** template `carousel.html` that shows on
 
 The images for each carousel are pulled from **single subdirectories** inside your page bundle. The carousels have the lightbox2 functionality.
 
-The caption for the images is fetched from **EXIF metadata**, so you need to fill the correponding EXIF field in the jpegs (for images whitout default EXIF metadata, like camera photos).
+The caption for the images in a subdirectory can be fetched from the images filename or from the **EXIF metadata _.ImageDescription_**. In this last case, you will need to fill the correponding EXIF field in the jpegs (for images whitout default EXIF metadata). This option to fetch from filename or from EXIF is a per-subdirectory option, not a per-file option. 
 
 Until future development, images should be **manually resized** to the desired format and EXIF metadata shuld be inserted in the images with a jpeg format. The carousel will work even if you do not resize the images, but the result will be a carousel that will expand and contract to fit the single image original size. This is needed because in my tests, the resize function in Hugo will remove the EXIF metadata.  
 
@@ -186,7 +186,9 @@ The carousel caption is wrapped with the standard bootstrap `carousel-caption` c
 - [ ] Add EXIF caption to lightbox pulled from jpeg metadata.
 - [x] Add parameters and conditional functions to show or hide the `controls` in the carousel. 
 - [x] Add parameters and conditional functions to show or hide the `indicators` in the carousel.
-
+- [ ] Add option to disable lightbox functionality and use only the carousel functions.
+- [ ] Remove hardcoded "slider-" prefix from image folders and let user define custom folder names.
+ 
 ## Credits
 
 This project is based on hugo documentation, tutorials and blogs. Thanks to:
