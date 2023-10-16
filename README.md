@@ -129,9 +129,9 @@ For other oprions, refer to https://gohugo.io/commands/hugo_mod_get.
 
 To use the shortcode, read the following instructions.
 
-### Code and files usage
+### Images folders structure
 
-In the page you want to use the shortcode, create the subfolder/s to store your images, and put some images in them (pre-resized and with EXIF data in the `ImageDescription` field of the jpegs). The format must be `slider-XX`, as the `slider-` part is hardcoded in the template. For example:
+In the page you want to use the shortcode, create the subfolder/s to store your images, in the format `slider-XX`. The format must be `slider-XX`, as the `slider-` part is hardcoded in the template. For example:
 
     .                   # page folder
     ├── ...
@@ -143,7 +143,19 @@ In the page you want to use the shortcode, create the subfolder/s to store your 
     ├── index.md        # Content file
     └── ...
 
-Then insert this shortcode in your page content where you want the carousel to appear. Each slider folder should have its own shortcode.
+### Images size
+
+Put your images in the folders. Images should be resized before, as your needs for each carousel dimensions. 
+
+### Images carousel caption
+
+If you want to use the images filename as the carousel caption, give the images a useful filename and set the `FILENAME` shortcode attribute (see below for the shortcode usage).
+
+ If you want to use the EXIF metadata to store the image caption, you must populate the `ImageDescription` metadata tag, and set the `EXIF` shortcode attribute. 
+
+### Shortcode parameters
+
+Insert this shortcode in your page content where you want the carousel to appear. Each slider folder must have its own shortcode.
 
 ```
 {{< carousel 
