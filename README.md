@@ -217,9 +217,11 @@ The carousel caption is wrapped with the standard bootstrap `carousel-caption` c
  
 ## Credits
 
-This project is based on hugo documentation, tutorials and blogs. Thanks to:
+This project is based on hugo documentation, tutorials, blogs and external scripts. Thanks to:
 
 * [Hugo Docs](https://github.com/gohugoio/hugoDocs/)
+* [jQuery javascript library](https://jquery.com/)
+* [Lightbox2 javascript library](https://github.com/lokesh/lightbox2)
 * [Future Web Design](https://futurewebdesign.au/)
 * [The New Synamic - Hugo Module article](https://www.thenewdynamic.com/article/hugo-modules-everything-from-imports-to-create/)
 
