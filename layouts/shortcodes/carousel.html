@@ -1,6 +1,7 @@
 {{/* Hugo Bootstrap Lightbox Carousel Shortcode*/}}
 {{/* Credits: André Bonfanti - abonfo@gmail.com*/}}
 
+{{/* Fetch parameters from shortcode */}}
 {{ $slider_num := .Get "slider_num" }}
 {{ $slider_images := .Page.Resources.ByType "image" }}
 {{/* interval=false will not autoplay the carousel */}}
@@ -13,6 +14,7 @@
 {{ $wrap := .Get "wrap" }}
 {{ $caption_source := .Get "caption_source" }}
 
+{{/* Render a carousel container if an image folder ID is given, or a folder name */}}
 {{ with $slider_num }}
 <div class="container">
   <div class="row d-flex justify-content-center">
@@ -20,6 +22,7 @@
 	    
       {{ $images := $slider_images.Match (printf "slider-%s/*" $slider_num) }}
 
+      {{/* Define carousel and attributes from parameters */}}
       <div id="{{ printf "LightboxCarousel-%s" $slider_num }}" 
              class="carousel 
              {{ with $dark }} carousel-dark {{ end }} 
@@ -29,6 +32,7 @@
              data-bs-interval="{{ $interval }}" 
              data-bs-wrap="{{ $wrap }}">
 
+          {{/* Add bottom indicators to carousel if parameter is set */}}
           {{ with $indicators }}
             <div class="carousel-indicators">
               {{ range $index, $value := $images }}
@@ -38,6 +42,7 @@
             </div>
           {{ end }}
 
+          {{/* Render images */}}
           <div class="carousel-inner">
 			      {{ range $index, $value := $images }}
               <div class="carousel-item{{ if eq $index 0 }} active{{ end }}">
@@ -45,14 +50,17 @@
 				          <img src="{{ $value.RelPermalink }}" class="d-block w-100" alt="Slide {{ add $index 1}}">
 			          </a>
                 
+                {{/* Render caption if parameter is set */}}
                 {{ with $caption_source }}
                   <div class="carousel-caption">
                     <p class="carousel-description">
                     
+                    {{/* Fetch caption from EXIF */}}
                     {{ if eq $caption_source "EXIF" }}
                       {{ with $value.Exif  }} 
                         {{ with .Tags.ImageDescription }} {{ . }} {{ end }}
                       {{ end }}
+                    {{/* Fetch caption from FILENAME */}}
                     {{ else if eq $caption_source "FILENAME"}}
                       {{ path.BaseName $value }}
                     {{ end }}
@@ -63,7 +71,8 @@
 			      </div>
             {{ end }}
           </div>
-          
+
+          {{/* Add controls to carousel if parameter is set */}}
           {{ with $controls }}
           <button class="carousel-control-prev" type="button" data-bs-target="#{{ printf "LightboxCarousel-%s" $slider_num }}"
             data-bs-slide="prev">
