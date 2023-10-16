@@ -37,16 +37,22 @@ You must have a Hugo theme based on Bootstrap, as the template uses the bootstra
 
 The code is tested against Boostrap v5.2. The code could work on previous Bootstrap version, but you should test it before. For example, the "ride" option do not have the "true" attribute in Bootstrap v5.0 according to the Bootstrap v.5.0 documentation.
 
-#### Lightbox and jquery scripts
+#### Lightbox and jquery scripts and css
 
-Until future development to merge requirements inside this module, you must fetch `jquery` and `lightbox` javascripts in your scripts template page, or in your preferred location. For example, if your theme has a scripts.html template, you could set this tags inside: 
+Until future development to merge requirements inside this module, you must add `jquery` and `lightbox` javascripts/css in your templates or pages, or in your preferred location. 
 
-```
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
-```
+In your `<head>` tags, add lightbox2 css:
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css" />
+
+In your footer scripts, add the javascript tags: 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
 
 Or you can download the minified version of the scripts and put them in your asset/js folder, and link them inside your code.
+
+Make sure the `jquery` script is loaded before the `lightbox2` script.
 
 #### Go and Git install
 
