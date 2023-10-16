@@ -14,6 +14,7 @@
 {{ $wrap := .Get "wrap" }}
 {{ $caption_source := .Get "caption_source" }}
 {{ $lightbox := .Get "lightbox" }}
+{{ $touch := .Get "touch" }}
 
 {{/* Render a carousel container if an image folder ID is given, or a folder name */}}
 {{ with $slider_num }}
@@ -31,7 +32,9 @@
              {{ with $fade }} carousel-fade {{ end }}" 
              data-bs-ride="{{ $ride }}" 
              data-bs-interval="{{ $interval }}" 
-             data-bs-wrap="{{ $wrap }}">
+             data-bs-wrap="{{ $wrap }}"
+             {{ if eq $touch "false" }}data-bs-touch="{{ $touch }}"{{ end }}
+             >
 
           {{/* Add bottom indicators to carousel if parameter is set */}}
           {{ with $indicators }}
