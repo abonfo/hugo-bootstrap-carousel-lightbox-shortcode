@@ -155,6 +155,7 @@ Then insert this shortcode in your page content where you want the carousel to a
     controls=true
     indicators=true
     dark=false
+    caption_source=EXIF
 >}}
 ```
 Where the parameters are:
@@ -166,12 +167,13 @@ Where the parameters are:
  * **controls** (OPTIONAL): "true" or "false", to enable or disable the left and right arrows. If the parameter is omitted, no arrows will be shown.
  * **indicators** (OPTIONAL): "true" or "false", to enable or disable the bottom indicators. If the parameter is omitted, no indicators will be shown.
  * **dark** (OPTIONAL): "true" or "false", to enable or disable dark controls, indicators, and captions. If the parameter is omitted, white theme colors will be used. You can override this behaviour by setting your colors in your custom css file.  
+* **caption_source** (OPTIONAL): "EXIF" to use the image description text inside the image EXIF metadata (it fetches the _.ImageDescription_ tag); "FILENAME" to use the file name without the extension. If the parameter is omitted, no caption will be shown and no css class for the caption will be given.
 
 ### Css usage
 
 This module is built using the same classes from the bootstrap carousel component (refer to https://getbootstrap.com/docs/5.2/components/carousel/).
 
-The carousel caption is wrapped with the standard bootstrap `carousel-caption` class. Inside this class, the module implements a custom `carousel-description` class that wraps the EXIF metadata `ImageDescription`. However, this custom class is available only if the EXIF metadata exists (the class is rendered only if the metadata tag exists).
+The carousel caption is wrapped with the standard bootstrap `carousel-caption` class. Inside this class, the module implements a custom `carousel-description` class that wraps the text caption. These two classes are available only if the **caption_source** parameter is given.
 
 
 ## Roadmap
@@ -180,7 +182,7 @@ The carousel caption is wrapped with the standard bootstrap `carousel-caption` c
 - [x] Add wrap bootstrap carousel option as shortcode parameter.
 - [x] Add dark bootstrap carousel option as shortcode parameter.
 - [ ] Add resize option parameter to dynamically set the image size (this can break EXIF metadata), or use other methods for scaling the images.
-- [ ] Add shortcode parameter to fetch a specific EXIF field, or fallback to image filename for non-jpeg images, or other source for captions.  
+- [x] Add shortcode parameter to fetch a specific EXIF field, or fallback to image filename ~~for non-jpeg images, or other source for captions~~.  
 - [ ] Add EXIF caption to lightbox pulled from jpeg metadata.
 - [x] Add parameters and conditional functions to show or hide the `controls` in the carousel. 
 - [x] Add parameters and conditional functions to show or hide the `indicators` in the carousel.

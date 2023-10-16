@@ -11,37 +11,59 @@
 {{ $indicators := .Get "indicators" }}
 {{ $dark := .Get "dark" }}
 {{ $wrap := .Get "wrap" }}
+{{ $caption_source := .Get "caption_source" }}
 
 {{ with $slider_num }}
 <div class="container">
-    <div class="row d-flex justify-content-center">
-      <div class="col-lg-9 col-xl-8">
-		{{ $images := $slider_images.Match (printf "slider-%s/*" $slider_num) }}
-        <div id="{{ printf "LightboxCarousel-%s" $slider_num }}" class="carousel {{ with $dark }} carousel-dark {{ end }} slide mb-5 {{ with $fade }} carousel-fade {{ end }}" data-bs-ride="{{ $ride }}" data-bs-interval="{{ $interval }}" data-bs-wrap="{{ $wrap }}">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-9 col-xl-8">
+	    
+      {{ $images := $slider_images.Match (printf "slider-%s/*" $slider_num) }}
+
+      <div id="{{ printf "LightboxCarousel-%s" $slider_num }}" 
+             class="carousel 
+             {{ with $dark }} carousel-dark {{ end }} 
+             slide mb-5 
+             {{ with $fade }} carousel-fade {{ end }}" 
+             data-bs-ride="{{ $ride }}" 
+             data-bs-interval="{{ $interval }}" 
+             data-bs-wrap="{{ $wrap }}">
+
           {{ with $indicators }}
-          <div class="carousel-indicators">
-            {{ range $index, $value := $images }}
-            <button type="button" data-bs-target="#{{ printf "LightboxCarousel-%s" $slider_num }}" data-bs-slide-to="{{ $index }}" {{ if eq
-              $index 0 }}class="active" aria-current="true" {{ end }}aria-label="Slide {{ add $index 1}}"></button>
-            {{ end }}
-          </div>
+            <div class="carousel-indicators">
+              {{ range $index, $value := $images }}
+              <button type="button" data-bs-target="#{{ printf "LightboxCarousel-%s" $slider_num }}" data-bs-slide-to="{{ $index }}" {{ if eq
+                $index 0 }}class="active" aria-current="true" {{ end }}aria-label="Slide {{ add $index 1}}"></button>
+              {{ end }}
+            </div>
           {{ end }}
+
           <div class="carousel-inner">
-			        {{ range $index, $value := $images }}
+			      {{ range $index, $value := $images }}
               <div class="carousel-item{{ if eq $index 0 }} active{{ end }}">
   			        <a href="{{ $value.RelPermalink }}" data-lightbox="{{ $slider_num }}">
 				          <img src="{{ $value.RelPermalink }}" class="d-block w-100" alt="Slide {{ add $index 1}}">
 			          </a>
+                
+                {{ with $caption_source }}
+                  <div class="carousel-caption">
+                    <p class="carousel-description">
+                    
+                    {{ if eq $caption_source "EXIF" }}
+                      {{ with $value.Exif  }} 
+                        {{ with .Tags.ImageDescription }} {{ . }} {{ end }}
+                      {{ end }}
+                    {{ else if eq $caption_source "FILENAME"}}
+                      {{ path.BaseName $value }}
+                    {{ end }}
+                    </p>
+                  </div>
+                {{ end }}
 
-              {{ with $value.Exif  }} 
-                <div class="carousel-caption">
-                  {{ with .Tags.ImageDescription }} <p class="carousel-description">{{ . }}</p> {{ end }}
-                </div>
-              {{ end }}
-
-			        </div>
+			      </div>
             {{ end }}
           </div>
+          
           {{ with $controls }}
           <button class="carousel-control-prev" type="button" data-bs-target="#{{ printf "LightboxCarousel-%s" $slider_num }}"
             data-bs-slide="prev">
@@ -54,8 +76,9 @@
             <span class="visually-hidden">Next</span>
           </button>
           {{ end }}
-        </div>
+
       </div>
     </div>
   </div>
-  {{ end }}
+</div>
+{{ end }}
