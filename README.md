@@ -153,11 +153,13 @@ In the page you want to use the shortcode, create the subfolder/s to store your 
 
 Put your images in the folders. Images should be resized before, as your needs for each carousel dimensions. 
 
-### Images carousel caption
+### Images carousel and lightbox captions
 
-If you want to use the images filename as the carousel caption, give the images a useful filename and set the `FILENAME` shortcode attribute (see below for the shortcode usage).
+The carousel and the lightbox captions can be defined separately: from EXIF metadata or from the filename.
 
- If you want to use the EXIF metadata to store the image caption, you must populate the `ImageDescription` metadata tag, and set the `EXIF` shortcode attribute. 
+If you want to use the images filename as the carousel/lightbox caption, give the images a useful filename and set the `FILENAME` shortcode attribute (see below for the shortcode usage).
+
+If you want to use the EXIF metadata as the carousel/lightbox caption, you must populate the image `ImageDescription` metadata tag, and set the `EXIF` shortcode attribute. 
 
 ### Shortcode parameters
 
